@@ -14,7 +14,7 @@ var crudApp = new function () {
     //table의 최상단 열 데이터를 담을 배열, header. 확장성을 위해 문자열 하드코딩하지 않기
     this.col = [];
     //위의 데이터들을 토대로 실제 테이블을 만들어주는 메소드
-    this.createTable = () => {
+    this.createTable = function() {
         //json 데이터 배열 순회
         for (var i = 0; i < this.myClass.length; i++) {
             //json 데이터의 key값 순회
