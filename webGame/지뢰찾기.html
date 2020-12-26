@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Minesweeper - 지뢰찾기</title>
+    <style>
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid #bbb;
+            text-align: center;
+            line-height: 20px;
+            width: 20px;
+            height: 20px;
+            background: #222;
+        }
+        td.opened {
+            background: white;
+        }
+        td.flag {
+            background: red;
+        }
+        td.question {
+            background: orange;
+        }
+    </style>
+</head>
+<body>
+
+    <input id="hor" type="number" placeholder="가로" value="10">
+    <input id="ver" type="number" placeholder="세로" value="10">
+    <input id="mine" type="number" placeholder="지뢰" value="20">
+    <button id="exec">실행</button>
+    <table id="table">
+        <thead>
+            <tr>
+                <td><span id="timer">0</span>초</td>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+    <div id="result"></div>
+
+<script>
+//스코프간의 상하관계를 스코프 체인이라고 부른다
+//코드가 적힌 순간 스코프가 정해짐
+//이것을 렉시컬 스코프, 정적 스코프 라고 부른다
+var dataset = [];
+var tbody = document.querySelector('#table tbody');
+var 중단플래그 = false;//플래그는 코드의 흐름을 좌우하는 변수를 가리킵니다
+var 열은칸 = 0;
+var 코드표 = {
+    연칸: -1,
+    물음표: -2,
+    깃발: -3,
+    깃발지뢰: -4,
+    물음표지뢰: -5,
+    지뢰: 1,
+    보통칸: 0,
+};
+
+document.querySelector('#exec').addEventListener('click', function() {
+    //tbody 내부 먼저 초기화
+    tbody.innerHTML = '';
+    document.querySelector('#result').textContent = '';
+    dataset = [];
+    열은칸 = 0;
+    중단플래그 = false;
+    var hor = parseInt(document.querySelector('#hor').value);
+    var ver = parseInt(document.querySelector('#ver').value);
+    var mine = parseInt(document.querySelector('#mine').value);
+
+    //지뢰 위치 뽑기
+    var 후보군 = Array(hor * ver)
+        .fill()
+        .map(function (요소, 인덱스) {
+            return 인덱스;
+        });
+    var 셔플 = [];
+
+    while (후보군.length > hor * ver - mine) {
+        var 이동값 = 후보군.splice(Math.floor(Math.random() * 후보군.length), 1)[0];
+        셔플.push(이동값);
+    }
+
+    console.log(셔플);
+    // 지뢰 테이블 만들기
+    for (var i = 0; i < ver; i += 1) {
+        var arr = [];
+        var tr = document.createElement('tr');
+        dataset.push(arr);
+
+        for (var j = 0; j < hor; j += 1) {
+            arr.push(코드표.보통칸);
+            var td = document.createElement('td');
+            //addEventListener가 코드상 아래 있어도 비동기 이벤트 때문에 td보다 빠르게 실행되면 이벤트가 안생긴다
+            //td가 없을때는 이벤트를 줄 수 없다
+            td.addEventListener('contextmenu', function (e) {//contextmenu : 마우스 오른쪽 클릭 이벤트
+                e.preventDefault();
+
+                if (중단플래그) {
+                    return;
+                }
+                //e.currentTarget e.target 차이 알기
+                var 부모tr = e.currentTarget.parentNode;
+                var 부모tbody = e.currentTarget.parentNode.parentNode;
+                //indexOf는 배열에서만 사용 가능, Array.prototype.indexOf를 이용하면 배열이 아니어도 사용 가능
+                var 칸 = Array.prototype.indexOf.call(부모tr.children, e.currentTarget);
+                var 줄 = Array.prototype.indexOf.call(부모tbody.children, 부모tr);
+
+                if (dataset[줄][칸] === 코드표.연칸) {//이미 연 칸은 오른쪽 눌러도 효과 없게
+                    return;
+                }
+
+                if (e.currentTarget.textContent === '' || e.currentTarget.textContent === 'X') {
+                    e.currentTarget.textContent = '!';
+                    e.currentTarget.classList.add('flag');
+
+                    if (dataset[줄][칸] === 코드표.지뢰) {
+                        dataset[줄][칸] = 코드표.깃발지뢰;
+                    } else {
+                        dataset[줄][칸] = 코드표.깃발;
+                    }
+                } else if (e.currentTarget.textContent === '!') {
+                    e.currentTarget.textContent = '?';
+                    e.currentTarget.classList.remove('flag');
+                    e.currentTarget.classList.add('question');
+
+                    if (dataset[줄][칸] === 코드표.깃발지뢰) {
+                        dataset[줄][칸] = 코드표.물음표지뢰;
+                    } else {
+                        dataset[줄][칸] = 코드표.물음표;
+                    }
+                } else if (e.currentTarget.textContent === '?') {
+                    e.currentTarget.classList.remove('question');
+
+                    if (dataset[줄][칸] === 코드표.물음표지뢰) {
+                        e.currentTarget.textContent = 'X';
+                        dataset[줄][칸] = 코드표.지뢰;
+                    } else {
+                        e.currentTarget.textContent = '';
+                        dataset[줄][칸] = 코드표.보통칸;
+                    }
+                }
+            });
+
+            td.addEventListener('click', function (e) {
+
+                if (중단플래그) {
+                    return;//-> tbody{point-event:none;}
+                }
+
+                var 부모tr = e.currentTarget.parentNode;
+                var 부모tbody = e.currentTarget.parentNode.parentNode;
+                var 칸 = Array.prototype.indexOf.call(부모tr.children, e.currentTarget);
+                var 줄 = Array.prototype.indexOf.call(부모tbody.children, 부모tr);
+
+                if ([코드표.연칸, 코드표.깃발, 코드표.깃발지뢰, 코드표.물음표지뢰, 코드표.물음표].includes(dataset[줄][칸])) {
+                    return;
+                }
+                //클릭했을때
+                e.currentTarget.classList.add('opened');
+                열은칸 += 1;
+
+                if (dataset[줄][칸] === 코드표.지뢰) {//지뢰 클릭
+                    e.currentTarget.textContent = '펑';
+                    document.querySelector('#result').textContent = '실패 ㅠㅠ';
+                    중단플래그 = true;
+                } else {//지뢰가 아닌 경우 주변 지뢰 개수
+                    var 주변 = [
+                        dataset[줄][칸-1], dataset[줄][칸+1],
+                    ];
+
+                    if (dataset[줄-1]) {
+                        주변 = 주변.concat([dataset[줄-1][칸-1], dataset[줄-1][칸], dataset[줄-1][칸+1]]);
+                    }
+                    if (dataset[줄+1]) {
+                        주변 = 주변.concat([dataset[줄+1][칸-1], dataset[줄+1][칸], dataset[줄+1][칸+1]]);
+                    }
+
+                    var 주변지뢰개수 = 주변.filter(function(v) {
+                        return [코드표.지뢰, 코드표.깃발지뢰, 코드표.물음표지뢰].includes(v);
+                    }).length;
+
+                    //거짓인 값: false, '', 0, null, undefined, NaN
+                    e.currentTarget.textContent = 주변지뢰개수 || '';
+                    dataset[줄][칸] = 코드표.연칸;
+
+                    if (주변지뢰개수 === 0) {
+                        console.log('주변을 엽니다');
+                        var 주변칸 = [];
+
+                        if (tbody.children[줄-1]) {
+                            주변칸 = 주변칸.concat([
+                                tbody.children[줄 - 1].children[칸 - 1],
+                                tbody.children[줄 - 1].children[칸],
+                                tbody.children[줄 - 1].children[칸 + 1],
+                            ]);
+                        }
+
+                        주변칸 = 주변칸.concat([
+                            tbody.children[줄].children[칸 - 1],
+                            tbody.children[줄].children[칸 + 1],
+                        ]);
+
+                        if (tbody.children[줄+1]) {
+                            주변칸 = 주변칸.concat([
+                                tbody.children[줄 + 1].children[칸 - 1],
+                                tbody.children[줄 + 1].children[칸],
+                                tbody.children[줄 + 1].children[칸 + 1],
+                            ]);
+                        }
+                        //배열에서 null, undefined, '' 제거
+                        주변칸.filter(function (v) {
+                            return !!v;
+                        }).forEach(function(옆칸) {
+                            var 부모tr = 옆칸.parentNode;
+                            var 부모tbody = 옆칸.parentNode.parentNode;
+                            var 옆칸칸 = Array.prototype.indexOf.call(부모tr.children, 옆칸);
+                            var 옆칸줄 = Array.prototype.indexOf.call(부모tbody.children, 부모tr);
+
+                            if (dataset[옆칸줄][옆칸칸] !== 코드표.연칸) {
+                                옆칸.click();
+                            }
+                        });
+                    }
+                }
+
+                console.log(열은칸, hor * ver - mine);
+                //게임 성공 조건
+                if (열은칸 === hor * ver - mine) {
+                    중단플래그 = true;
+                    document.querySelector('#result').textContent = '승리 ^^';
+                }
+            });
+            tr.appendChild(td);
+        }
+        tbody.appendChild(tr);
+    }
+
+    // 지뢰 심기
+    for (var k = 0; k < 셔플.length; k++) { //예 60
+        var 세로 = Math.floor(셔플[k] / ver);  //예 7 -> 6
+        var 가로 = 셔플[k] % ver; //예 0 -> 0
+        console.dir(tbody);
+        console.log(세로);
+        tbody.children[세로].children[가로].textContent = 'X';
+        dataset[세로][가로] = 코드표.지뢰;
+    }
+});
+</script>
+
+</body>
+</html>
