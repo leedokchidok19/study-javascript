@@ -33,13 +33,21 @@ study javascript
         + 렉시컬 스코프
         + 클로저
     + [반응속도테스트](https://leedokchidok19.github.io/studyJavascript/webGame/반응속도.html)
+        + 호출 스택(call back)
+        + 재귀함수
     + [틱택토 심화](https://leedokchidok19.github.io/studyJavascript/webGame/틱택토(컴퓨터).html)
     + [카드 짝맞추기 게임](https://leedokchidok19.github.io/studyJavascript/webGame/짝맞추기.html)
         + [Object.create() 추천](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
         + [객체의 복사](https://www.zerocho.com/category/JavaScript/post/5750d384b73ae5152792188d)
         + 팩토리패턴(비추천)
         + 프로토 타입(비추천)
-    + 자스스톤
-    + 2048게임
+    + [자스스톤](https://leedokchidok19.github.io/studyJavascript/webGame/자스스톤.html)
+        + call by value
+        + call by reference(자바스크립트에는 없습니다)
+        + call by sharing
+        + 생성자, new
+        + [cloneNode](https://webisfree.com/2015-05-06/[%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8]-clonenode()-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%85%B8%EB%93%9C-%EB%B3%B5%EC%A0%9C%ED%95%98%EA%B8%B0)
+    + [2048게임](https://leedokchidok19.github.io/studyJavascript/webGame/2048.html)
+        + mousedown, mousemove, mouseup
     + 테트리스
-+ []()
++
