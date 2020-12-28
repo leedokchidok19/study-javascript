@@ -8,8 +8,8 @@ study javascript
     + [수강관리](https://leedokchidok19.github.io/studyJavascript/study/study.html)   
     ![수강관리 APP 화면](images/study.PNG) 
 + [자바스크립트 기초 강의 (ES5+): 같이 노트를 작성하며 배워요 📒](https://www.youtube.com/watch?v=wcsVjmHrUQg&list=PLv2d7VI9OotTVOL4QmPfvJWPJvkmv6h-2)
-    + [깃허브 주소](https://github.com/dream-ellie/learn-javascript)
-+ [자바스크립트 강좌](https://www.youtube.com/watch?v=Qq2IJ2iEgWA&list=PLcqDmjxt30Rtbxbh4eJREOVekql_kWVmu)
+    + 0 [깃허브 주소](https://github.com/dream-ellie/learn-javascript)
++ [자바스크립트 강좌](https://www.youtube.com/watch?v=Qq2IJ2iEgWA&list=PLcqDmjxt30Rtbxbh4eJREOVekql_kWVmu)]
     + [깃허브 주소](https://github.com/ZeroCho/webgame-lecture)
     + [끝말잇기](https://leedokchidok19.github.io/studyJavascript/webGame/끝말잇기.html)
     + [구구단](https://leedokchidok19.github.io/studyJavascript/webGame/구구단.html)
@@ -49,5 +49,10 @@ study javascript
         + [cloneNode](https://webisfree.com/2015-05-06/[%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8]-clonenode()-%ED%95%A8%EC%88%98%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%B4-%EB%85%B8%EB%93%9C-%EB%B3%B5%EC%A0%9C%ED%95%98%EA%B8%B0)
     + [2048게임](https://leedokchidok19.github.io/studyJavascript/webGame/2048.html)
         + mousedown, mousemove, mouseup
-    + 테트리스
+    + [테트리스](https://leedokchidok19.github.io/studyJavascript/webGame/테트리스.html)
+        + switch, keyup, keydown, keypress
+        + 이벤트 루프
+        + var(변수-함수스코프), const(상수-블록스코프), let(변수-블록스코프)
+        + [ES2015(ES6) Function(함수)](https://www.zerocho.com/category/ECMAScript/post/5759abc132522e883c6f6dda)
+        + [...Array(숫자).keys()]
 +
