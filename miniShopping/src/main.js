@@ -1,5 +1,6 @@
 //Fetch the items from the JSON file
 function loadItems(){
+    //local file 위치에서는 data/data.json 인식 못 함
     return fetch('data/data.json')
         .then(response => response.json())
         .then(json => json.items);
