@@ -8,7 +8,12 @@ study javascript
     + [수강관리](https://leedokchidok19.github.io/studyJavascript/study/study.html)   
     ![수강관리 APP 화면](images/study.PNG) 
 + [자바스크립트 기초 강의 (ES5+): 같이 노트를 작성하며 배워요 📒](https://www.youtube.com/watch?v=wcsVjmHrUQg&list=PLv2d7VI9OotTVOL4QmPfvJWPJvkmv6h-2)
-    + 0 [깃허브 주소](https://github.com/dream-ellie/learn-javascript)
+    + [깃허브 주소](https://github.com/dream-ellie/learn-javascript)
+
++ [쇼핑몰 미니게임 클론 코딩 & 코드 리뷰](https://academy.dream-coding.com/courses/mini-shopping)
+    + [자바스크립트 10. JSON 개념 정리 와 활용방법 및 유용한 사이트 공유 JavaScript JSON | 프론트엔드 개발자 입문편 (JavaScript ES6)](https://www.youtube.com/watch?v=FN_D4Ihs3LE&feature=youtu.be)
+    + [JavaScript Array 개념편](https://youtu.be/yOdAVDuHUKQ)
+    + [JavaScript Array API 편](https://youtu.be/3CUjtKJ7PJg)
 + [자바스크립트 강좌](https://www.youtube.com/watch?v=Qq2IJ2iEgWA&list=PLcqDmjxt30Rtbxbh4eJREOVekql_kWVmu)]
     + [깃허브 주소](https://github.com/ZeroCho/webgame-lecture)
     + [끝말잇기](https://leedokchidok19.github.io/studyJavascript/webGame/끝말잇기.html)
