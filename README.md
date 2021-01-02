@@ -10,7 +10,7 @@ study javascript
     + [로또추첨기](https://leedokchidok19.github.io/studyJavascript/webGame/로또.html)
     + [가위바위보](https://leedokchidok19.github.io/studyJavascript/webGame/가위바위보.html)
     + [지뢰찾기](https://leedokchidok19.github.io/studyJavascript/webGame/지뢰찾기.html)
-    + [반응속도테스트](https://leedokchidok19.github.io/studyJavascript/webGame/반응속도.html)
+    + [반응속도](https://leedokchidok19.github.io/studyJavascript/webGame/반응속도.html)
     + [틱택토 심화](https://leedokchidok19.github.io/studyJavascript/webGame/틱택토(컴퓨터).html)
     + [짝맞추기](https://leedokchidok19.github.io/studyJavascript/webGame/짝맞추기.html)
     + [자스스톤](https://leedokchidok19.github.io/studyJavascript/webGame/자스스톤.html)
@@ -35,29 +35,37 @@ study javascript
 + [자바스크립트 강좌](https://www.youtube.com/watch?v=Qq2IJ2iEgWA&list=PLcqDmjxt30Rtbxbh4eJREOVekql_kWVmu)
     + [깃허브 주소](https://github.com/ZeroCho/webgame-lecture)
     + 끝말잇기
+           ![끝말잇기 화면](images/webGame/끝말잇기.PNG)
     + 구구단
+           ![구구단 화면](images/webGame/구구단.PNG)
     + 숫자야구
         + push, pop, shift, unshift, slice, split, join, indexOf
+           ![숫자야구 화면](images/webGame/구구단.PNG)
     + 틱택토
         + 이차원 배열
         + e.target, parentNode
+           ![틱택토 화면](images/webGame/틱택토.PNG)
     + 로또추첨기
         + Array, fill
         + Array map
         + slice, sort
         + querySelector
+           ![로또추첨기](images/webGame/로또추첨기.PNG)
     + 가위바위보
         + dictionary 자료 구조
         + object, entries, find, findIndex
         + setTimeout, clearTimeout
+           ![가위바위보](images/webGame/가위바위보.PNG)
     + 지뢰찾기
         + 스코프
         + 스코프 체인
         + 렉시컬 스코프
         + 클로저
-    + 반응속도테스트
+           ![지뢰찾기](images/webGame/지뢰찾기.PNG)
+    + 반응속도
         + 호출 스택(call back)
         + 재귀함수
+           ![반응속도](images/webGame/반응속도.PNG)
     + 틱택토 심화
     + 짝맞추기 게임
         + [Object.create() 추천](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Object/create)
