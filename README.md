@@ -1,7 +1,8 @@
-# studyJavascript
-study javascript
-자바스크립트 공부
+# 프로젝트명
+study-ㅓavascript
+> 자바스크립트 공부
 ---
+# 구현 목록
 + games
     + [끝말잇기](https://leedokchidok19.github.io/studyJavascript/webGame/끝말잇기.html)
     + [구구단](https://leedokchidok19.github.io/studyJavascript/webGame/구구단.html)
