@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
  
-  "name": "clone-FrequencyOf",
-  "description": "My lovely words, The source of clone coding is \"opentutorials.\"",
+  "name": "FrequencyOf",
+  "description": "My lovely words",
   "version": "1.0",
  
   "browser_action": {
@@ -10,6 +10,7 @@
     "default_popup": "popup.html"
   },
   "permissions": [
-    "activeTab"
+    "activeTab",
+    "storage"
   ]
 }
