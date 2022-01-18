@@ -1,5 +1,5 @@
 # 프로젝트명
-study-ㅓavascript
+study-javascript
 > 자바스크립트 공부
 ---
 # 구현 목록
