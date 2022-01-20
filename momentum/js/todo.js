@@ -12,7 +12,9 @@ function saveToDos() {
 
 function deleteTodo(event) {
     const li = event.target.parentElement;
+    toDos = toDos.filter((toDo) => toDo.id !== parseInt(li.id));
     li.remove();
+    saveToDos();
 }
 
 function paintToDo(newTodo) {
@@ -20,7 +22,8 @@ function paintToDo(newTodo) {
     const span = document.createElement('span');
     const button = document.createElement('button');
 
-    span.innerText = newTodo;
+    li.id = newTodo.id;
+    span.innerText = newTodo.text;
     button.innerText = '❌';//이모지 윈도우 기준 window + .
 
     button.addEventListener('click', deleteTodo);
@@ -35,8 +38,12 @@ function handleToDoSubmit(event) {
     event.preventDefault();
     const newTodo = toDoInput.value;
     toDoInput.value = '';
-    toDos.push(newTodo);
-    paintToDo(newTodo);
+    const newTodoObj = {
+        text: newTodo,
+        id: Date.now(),
+    }
+    toDos.push(newTodoObj);
+    paintToDo(newTodoObj);
     saveToDos();//localStorage에 toDos 배열 저장
 }
 

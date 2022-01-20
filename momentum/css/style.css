@@ -1,3 +1,95 @@
+/*root*/
+:root {
+    --color-black: black;
+    --color-gray: gray;
+    --color-white: white;
+}
+/*root*/
+
+/*common*/
+body {
+    background-color: var(--color-black);
+    color: var(--color-white);
+}
+
+#login-form > input, 
+#todo-form > input,
+button {
+    background: none;
+    border: none;
+    border-bottom: 3px solid gray !important;
+    font-size: 1.5rem;
+    outline: none;
+    font-weight: bold;
+    color: var(--color-white);
+}
+
+button {
+    border: none !important;
+}
+
+ul {
+    margin: auto;
+    width: 50%;
+    list-style: none;
+}
+
+li {
+    font-size: 1.75rem;
+}
+
 .hidden {
     display: none;
 }
+/*common*/
+
+
+
+
+/*clock*/
+#clock {
+    margin-top: 30vh;
+    text-align: center;
+    font-size: 3rem;
+}
+/*clock*/
+/*greetings*/
+#login-form {
+    text-align: center;
+}
+/*greetings*/
+/*quote*/
+#quote {
+    margin-bottom: 1vh;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    font-size: 1.5rem;
+}
+/*quote*/
+/*weather*/
+#weather {
+    margin-top: 1vh;
+    position: fixed;
+    top: 0;
+    right: 0;
+}
+/*weather*/
+/*todo*/
+#todo-form {
+    text-align: center;
+}
+#todo-form > input {
+    font-size: 2rem;
+}
+/*todo*/
+/*background*/
+img {
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -2;
+}
+/*background*/
