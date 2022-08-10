@@ -42,6 +42,48 @@ function loadImage() {
 
 }
 
+let keysDown = {};
+
+//방향키 읽어오는 함수
+function setupKeyboardListener() {
+    document.addEventListener('keydown', function(event){
+        console.log('key', event.keyCode);
+        console.log('key', event.key);
+        keysDown[event.keyCode] = true;
+        console.log('키다운에객체에 들어간 값은?', keysDown);
+    });
+    document.addEventListener('keyup', function(event){
+        delete keysDown[event.keyCode];
+        console.log('키클릭 후?', keysDown);
+    });
+}
+
+/*
+우주선 동작
+우주선이 오른쪽으로 가면 x 좌표 증가
+우주선이 왼쪽으로 가면 x 좌표 감소
+*/
+function update() {
+
+    if( 39 in keysDown ) {
+        spaceshipX += 5;
+    }//right
+
+    if( 37 in keysDown ) {
+        spaceshipX -= 5;
+    }//left
+
+    //우주선의 좌표가 캔버스 밖으로 나가지 않게 처리
+    if(spaceshipX <= 0) {
+        spaceshipX = 0;
+    }
+
+    if(spaceshipX >= canvas.width-60){
+       spaceshipX = canvas.width-60;
+    }
+
+}
+
 function render() {
 
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
@@ -50,11 +92,15 @@ function render() {
 }
 
 function main() {
-    
-    render();
+
+    update();//좌표값 업데이트
+    render();//그리기
     //console.log('animation calls main function');
     requestAnimationFrame(main);
 }
 
 loadImage();
+setupKeyboardListener();
 main();
+
+
