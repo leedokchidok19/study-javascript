@@ -20,6 +20,7 @@ study-javascript
 + [수강 관리 APP](https://leedokchidok19.github.io/studyJavascript/study/study.html)
 + [쇼핑몰 미니게임](https://leedokchidok19.github.io/studyJavascript/miniShopping/index.html)
 + [크롬익스텐션](https://chrome.google.com/webstore/detail/clone-frequencyof/mghhkmpidmmoaofemlmnaoobgcfcgdie)
++ [슈팅게임](https://chrome.google.com/webstore/detail/webGame/mghhkmpidmmoaofemlmnaoobgcfcgdie)
 ---
 ##### 학습 자료
 + [문법책 졸업하자! 만들면서 복습하는 JavaScript](https://edu.goorm.io/learn/lecture/25046/%EB%AC%B8%EB%B2%95%EC%B1%85-%EC%A1%B8%EC%97%85%ED%95%98%EC%9E%90-%EB%A7%8C%EB%93%A4%EB%A9%B4%EC%84%9C-%EB%B3%B5%EC%8A%B5%ED%95%98%EB%8A%94-javascript)
