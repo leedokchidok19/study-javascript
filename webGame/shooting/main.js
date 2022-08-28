@@ -19,9 +19,34 @@ document.body.appendChild(canvas);
 
 let backgroundImage, spaceshipImage, bulletImage, enemyImage, gameOverImage;
 
-//우주선 좌표(우주선의 크기는 60)
+//우주선 좌표(우주선의 이미지 크기는 60)
 let spaceshipX = canvas.width/2 - 60/2;
 let spaceshipY = canvas.height - 60;
+
+//총알 저장 리스트
+let bulletList = [];
+
+//총알 좌표
+function Bullet() {
+
+    this.x = 0;
+    this.y = 0;
+
+    //총알을 우주선 좌표를 기준으로 설정
+    this.init = function() {
+
+        this.x = spaceshipX+5; //총알 가운데 위치
+        this.y = spaceshipY;
+
+        bulletList.push(this);
+
+    }//init
+
+    this.update = function() {
+        this.y -= 7;
+    }
+
+}//Bullet
 
 function loadImage() {
 
@@ -46,17 +71,33 @@ let keysDown = {};
 
 //방향키 읽어오는 함수
 function setupKeyboardListener() {
+
     document.addEventListener('keydown', function(event){
         console.log('key', event.keyCode);
         console.log('key', event.key);
         keysDown[event.keyCode] = true;
         console.log('키다운에객체에 들어간 값은?', keysDown);
     });
+
     document.addEventListener('keyup', function(event){
         delete keysDown[event.keyCode];
         console.log('키클릭 후?', keysDown);
+        
+        if(event.keyCode == 32) { //32 == space bar
+            createBullet(); //총알 생성
+        }
     });
-}
+
+}//setupKeyboardListener
+
+//총알 생성
+function createBullet() {
+    
+    console.log('총알 생성');
+    let b = new Bullet();//총알 생성
+    b.init();
+
+}//createBullet
 
 /*
 우주선 동작
@@ -82,14 +123,26 @@ function update() {
        spaceshipX = canvas.width-60;
     }
 
-}
+    //총알의 y좌표를 업데이트하는 함수 호출
+    for(let i =0; i < bulletList.length; i++) {
+
+        bulletList[i].update();
+
+    }
+    
+
+}//update
 
 function render() {
 
     ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
     ctx.drawImage(spaceshipImage, spaceshipX, spaceshipY);
 
-}
+    for(let i =0; i < bulletList.length; i++) {
+        ctx.drawImage(bulletImage, bulletList[i].x, bulletList[i].y);
+    }
+
+}//render
 
 function main() {
 
@@ -97,7 +150,8 @@ function main() {
     render();//그리기
     //console.log('animation calls main function');
     requestAnimationFrame(main);
-}
+
+}//main
 
 loadImage();
 setupKeyboardListener();
