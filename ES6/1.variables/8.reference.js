@@ -9,7 +9,7 @@
 
 //원시 타입은 값이 복사되어 전달됨
 let a = 1;
-let b = a;//Copy by Value
+let b = a;//1 //Copy by Value
 b = 2;
 
 console.log(a);
@@ -24,5 +24,5 @@ let apple = {
 let orange = apple;//copy by Reference
 apple.name = '오렌지';
 
-console.log(apple);
-console.log(orange);
+console.log(apple);//'오렌지'
+console.log(orange);//'오렌지'
